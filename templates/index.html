@@ -12,23 +12,27 @@
 					<div class="uk-margin uk-text-center uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
 						<img class="" data-src="{{ url_for('static', path='logo_circle.webp') }}" width="" height="" alt="" uk-img>
 						<h3 class="uk-card-title uk-text-center">Te deseamos un excelente día.</h3>
-						<form>
+
+
+						<form method="POST" action="/auth" >
 							<div class="uk-margin">
 								<div class="uk-inline uk-width-1-1">
 									<span class="uk-form-icon" uk-icon="icon: happy"></span>
-									<input class="uk-input uk-form-large" type="text">
+									<input name="username" class="uk-input uk-form-large" type="text">
 								</div>
 							</div>
 							<div class="uk-margin">
 								<div class="uk-inline uk-width-1-1">
 									<span class="uk-form-icon" uk-icon="icon: lock"></span>
-									<input class="uk-input uk-form-large" type="password">	
+									<input name="password" class="uk-input uk-form-large" type="password">	
 								</div>
 							</div>
 							<div class="uk-margin">
 								<button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Iniciar Sesión</button>
 							</div>
 						</form>
+
+						
 					</div>
 				</div>
 			</div>

@@ -1,10 +1,10 @@
 from datetime import timedelta
 from fastapi import Depends, APIRouter, Response
+from fastapi.responses import RedirectResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi_login.exceptions import InvalidCredentialsException
 from fastapi_login import LoginManager
 from decouple import config
-from starlette import responses
 
 from .tools import verify_password
 from ..database import db_user
@@ -23,8 +23,9 @@ manager = LoginManager(
     AUTH_SECRET_KEY, 
     '/auth', 
     use_cookie=True,
-    use_header=False,
-    default_expiry=timedelta(hours=12))
+    cookie_name="access-token",
+    default_expiry=timedelta(hours=12)
+    )
 
 
 @manager.user_loader()
@@ -33,7 +34,7 @@ async def user_exist(key: str):
     return user
 
 
-@router.post('/', response_description="Login form route.")
+@router.post('/', response_description="Login form route.", response_class=RedirectResponse)
 async def login(response: Response, data: OAuth2PasswordRequestForm = Depends()):
     username = data.username
     password = data.password
@@ -49,7 +50,17 @@ async def login(response: Response, data: OAuth2PasswordRequestForm = Depends())
         data=dict(sub=user["key"])
     )
 
-    manager.set_cookie(response, access_token)
 
-    return {'token': access_token}
+    rr = RedirectResponse("/dashboard", 302)
+    rr.set_cookie(key="access-token", value=access_token, httponly=True)
+    #manager.set_cookie(response, access_token)
+    #return {'token': access_token}
+    return rr
+
+
+@router.get("/logout")
+async def route_logout_and_remove_cookie():
+    response = RedirectResponse(url="/")
+    response.delete_cookie("access-token", domain="localhost")
+    return response
 
