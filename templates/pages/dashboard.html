@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %} Espacio de Trabajo {% endblock title %}
+
+
+{% block content %}
+
+<div uk-grid>
+    <div>
+        <div class="uk-width-1-1">
+
+            <nav class="uk-navbar-container uk-margin" uk-navbar="mode: click">
+                <div class="uk-navbar-left">
+            
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="#">Active</a></li>
+                        <li>
+                            <a href="#">Parent</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-active"><a href="#">Active</a></li>
+                                    <li><a href="#">Item</a></li>
+                                    <li><a href="#">Item</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li><a href="#">Item</a></li>
+                    </ul>
+            
+                </div>
+            </nav>
+
+        </div>
+        <div class="uk-width-1-4">
+
+            <div class="uk-width-1-2@s">
+                <ul class="uk-nav-default uk-nav-divider" uk-nav>
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                </ul>
+            </div>
+
+        </div>
+        <div class="uk-width-auto">
+
+            <table class="uk-table uk-table-small uk-table-divider">
+                <thead>
+                    <tr>
+                        <th>Table Heading</th>
+                        <th>Table Heading</th>
+                        <th>Table Heading</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Table Data</td>
+                        <td>Table Data</td>
+                        <td>Table Data</td>
+                    </tr>
+                    <tr>
+                        <td>Table Data</td>
+                        <td>Table Data</td>
+                        <td>Table Data</td>
+                    </tr>
+                    <tr>
+                        <td>Table Data</td>
+                        <td>Table Data</td>
+                        <td>Table Data</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+{% endblock content %}
