@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
+from starlette.requests import Request
+from starlette.responses import RedirectResponse
 
 from core.security import auth
 from core import core

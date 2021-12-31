@@ -5,8 +5,6 @@ from dependencies import templates
 
 from .security.auth import manager
 
-
-
 router = APIRouter()
 
 

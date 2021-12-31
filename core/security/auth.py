@@ -36,7 +36,7 @@ async def user_exist(key: str):
 
 @router.post('/', response_description="Login form route.", response_class=RedirectResponse)
 async def login(response: Response, data: OAuth2PasswordRequestForm = Depends()):
-    username = data.username
+    username = data.username.upper()
     password = data.password
 
     user = await user_exist(username)
@@ -53,8 +53,6 @@ async def login(response: Response, data: OAuth2PasswordRequestForm = Depends())
 
     rr = RedirectResponse("/dashboard", 302)
     rr.set_cookie(key="access-token", value=access_token, httponly=True)
-    #manager.set_cookie(response, access_token)
-    #return {'token': access_token}
     return rr
 
 

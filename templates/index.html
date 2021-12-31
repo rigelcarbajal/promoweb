@@ -4,40 +4,49 @@
 
 {% block content %}
 
-<div class="uk-section uk-section-muted uk-flex uk-flex-middle uk-animation-fade" uk-height-viewport>
-	<div class="uk-width-1-1">
-		<div class="uk-container">
-			<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
-				<div class="uk-width-1-1@m">
-					<div class="uk-margin uk-text-center uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large">
-						<img class="" data-src="{{ url_for('static', path='logo_circle.webp') }}" width="" height="" alt="" uk-img>
-						<h3 class="uk-card-title uk-text-center">Te deseamos un excelente día.</h3>
+<main class="d-flex w-100">
+	<div class="container d-flex flex-column">
+		<div class="row vh-100">
+			<div class="col-sm-10 col-md-8 col-lg-6 mx-auto d-table h-100">
+				<div class="d-table-cell align-middle">
 
-
-						<form method="POST" action="/auth" >
-							<div class="uk-margin">
-								<div class="uk-inline uk-width-1-1">
-									<span class="uk-form-icon" uk-icon="icon: happy"></span>
-									<input name="username" class="uk-input uk-form-large" type="text">
-								</div>
-							</div>
-							<div class="uk-margin">
-								<div class="uk-inline uk-width-1-1">
-									<span class="uk-form-icon" uk-icon="icon: lock"></span>
-									<input name="password" class="uk-input uk-form-large" type="password">	
-								</div>
-							</div>
-							<div class="uk-margin">
-								<button type="submit" class="uk-button uk-button-primary uk-button-large uk-width-1-1">Iniciar Sesión</button>
-							</div>
-						</form>
-
-						
+					<div class="text-center mt-4">
+						<h1 class="h2">Promoser Grupo Publicitario</h1>
+						<p class="lead">
+							Te da la Bienvenida
+						</p>
 					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<div class="m-sm-4">
+								<div class="text-center">
+								</div>
+								<form action="/auth" method="POST">
+									<div class="mb-3">
+										<label class="form-label">Usuario</label>
+										<input autocomplete="off" class="form-control form-control-lg" type="username" name="username"
+											placeholder="Ingresa tu Usuario" />
+									</div>
+									<div class="mb-3">
+										<label class="form-label">Contraseña</label>
+										<input class="form-control form-control-lg" type="password" name="password"
+											placeholder="Ingresa tu Contraseña" />
+									</div>
+									<div>
+									</div>
+									<div class="text-center mt-3">
+										<button type="submit" class="btn btn-lg btn-danger">Iniciar Sesión</button> 
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+</main>
 
-{%  endblock content %}
+{% endblock content %}
