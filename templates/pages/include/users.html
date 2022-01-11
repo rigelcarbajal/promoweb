@@ -26,15 +26,27 @@
                                     </thead>
                                     <tbody>
 
-                                        {% for user in dbusers.fetch().items %}
-                                        <tr>
-                                            <td class="d-none d-xl-table-cell">{{ user["key"] }}</td>
-                                            <td>{{ user["firstName"] }}</td>
-                                            <td>{{ user["curp"] }}</td>
-                                            <td><span class="badge bg-success">{{ user["area"] }}</span></td>
-                                            <td class="d-none d-xl-table-cell">{{ user["created_at"] }}</td>
-                                        </tr>
-                                        {% endfor %}
+                                        {% if dbusers.fetch().items %}
+
+                                            {% for user in dbusers.fetch().items %}
+                                            <tr>
+                                                <td class="d-none d-xl-table-cell">{{ user["key"] }}</td>
+                                                <td>{{ user["firstName"] }}</td>
+                                                <td>{{ user["curp"] }}</td>
+                                                <td><span class="badge bg-success">{{ user["area"] }}</span></td>
+                                                <td class="d-none d-xl-table-cell">{{ user["created_at"] }}</td>
+                                            </tr>
+                                            {% endfor %}
+
+                                            {% else %}
+                                            <tr>
+                                                <td class="d-none d-xl-table-cell"> No hay usuarios para mostrar. :( </td>
+                                                <td>#####</td>
+                                                <td>#####</td>
+                                                <td><span class="badge bg-success">#####</span></td>
+                                                <td class="d-none d-xl-table-cell">#####</td>
+                                            </tr>
+                                        {% endif %}
                                         
                                     </tbody>
                                 </table>
