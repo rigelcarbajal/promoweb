@@ -12,6 +12,9 @@ from ..database import db_user
 
 AUTH_SECRET_KEY = config("AUTH_SECRET_KEY")
 
+class NotAuthenticatedException(Exception):
+    pass
+
 
 router = APIRouter(
     prefix='/auth',
@@ -24,7 +27,8 @@ manager = LoginManager(
     '/auth', 
     use_cookie=True,
     cookie_name="access-token",
-    default_expiry=timedelta(hours=12)
+    default_expiry=timedelta(hours=12),
+    custom_exception=NotAuthenticatedException
     )
 
 
