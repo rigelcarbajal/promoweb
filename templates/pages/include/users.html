@@ -1,5 +1,4 @@
 
-
 <div class="tab-content clearfix">
     <div class="tab-pane active" id="users">
 
@@ -27,15 +26,14 @@
                                     <tbody>
 
                                         {% if dbusers.fetch().items %}
-
                                             {% for user in dbusers.fetch().items %}
-                                            <tr>
-                                                <td class="d-none d-xl-table-cell">{{ user["key"] }}</td>
-                                                <td>{{ user["firstName"] }}</td>
-                                                <td>{{ user["curp"] }}</td>
-                                                <td><span class="badge bg-success">{{ user["area"] }}</span></td>
-                                                <td class="d-none d-xl-table-cell">{{ user["created_at"] }}</td>
-                                            </tr>
+                                                <tr>
+                                                    <td class="d-none d-xl-table-cell">{{ user["key"] }}</td>
+                                                    <td>{{ user["firstName"] }}</td>
+                                                    <td>{{ user["curp"] }}</td>
+                                                    <td><span class="badge bg-success">{{ user["area"] }}</span></td>
+                                                    <td class="d-none d-xl-table-cell">{{ user["created_at"] }}</td>
+                                                </tr>
                                             {% endfor %}
 
                                             {% else %}
@@ -60,7 +58,6 @@
         
             </div>
         </main>
-
 
 
     </div>
