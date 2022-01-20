@@ -14,10 +14,8 @@ async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
 
-
 @router.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request, user = Depends(manager)):
-    
     return templates.TemplateResponse("/pages/dashboard.html", {"request": request, "user": user, "dbusers": db_user})
 
 

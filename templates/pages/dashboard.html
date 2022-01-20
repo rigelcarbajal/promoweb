@@ -4,6 +4,7 @@
 
 
 {% block content %}
+{% from "pages/include/macros.html" import nav_link with context %}
 
 <div class="wrapper">
     <nav id="sidebar" class="sidebar js-sidebar">
@@ -16,48 +17,8 @@
                 <li class="sidebar-header">
                     Secciones
                 </li>
-
-                <li class="sidebar-item active">
-                    <a class="sidebar-link" href="#dashboard">
-                        <i class="align-middle" data-feather="dashboard"></i> <span class="align-middle">Dashboard</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-forms.html">
-                        <i class="align-middle" data-feather="file-text"></i> <span class="align-middle">Pedidos</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-cards.html">
-                        <i class="align-middle" data-feather="box"></i> <span class="align-middle">Productos</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="pages-blank.html">
-                        <i class="align-middle" data-feather="book"></i> <span class="align-middle">Clientes</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-header">
-                    Administrador
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#users">
-                        <i class="align-middle" data-feather="users"></i> <span class="align-middle">Usuarios</span>
-                    </a>
-                </li>
-
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="ui-typography.html">
-                        <i class="align-middle" data-feather="settings"></i> <span
-                            class="align-middle">Configuración</span>
-                    </a>
-                </li>
-
+                
+                {{ nav_link('dashboard', 'Dashboard') }}
             </ul>
         </div>
     </nav>

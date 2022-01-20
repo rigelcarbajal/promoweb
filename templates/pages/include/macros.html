@@ -1,8 +1,21 @@
 <!-- https://realpython.com/primer-on-jinja-templating/ -->
+<!-- start navbar items dashboard -->
 {% macro nav_link(endpoint, name) %}
-{% if request.endpoint.endswith(endpoint) %}
-  <li class="active"><a href="{{ url_for(endpoint) }}">{{name}}</a></li>
+{% if request.endpoint(endpoint) %}
+<li class="sidebar-item active">
+  <a class="sidebar-link" href="{{ url_for(endpoint) }}">
+      <i class="align-middle"></i> <span class="align-middle">{{ name }}</span>
+  </a>
+</li>
 {% else %}
-  <li><a href="{{ url_for(endpoint) }}">{{name}}</a></li>
+<li class="sidebar-item">
+  <a class="sidebar-link" href="{{ url_for(endpoint) }}">
+      <i class="align-middle"></i> <span class="align-middle">{{ name }}</span>
+  </a>
+</li>
 {% endif %}
 {% endmacro %}
+<!-- end navbar items dashboard -->
+
+
+
