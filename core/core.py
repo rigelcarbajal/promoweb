@@ -18,6 +18,14 @@ async def root(request: Request):
 async def dashboard(request: Request, user = Depends(manager)):
     return templates.TemplateResponse("/pages/dashboard.html", {"request": request, "user": user, "dbusers": db_user})
 
+@router.get("/products", response_class=HTMLResponse)
+async def dashboard(request: Request, user = Depends(manager)):
+    return templates.TemplateResponse("/pages/products.html", {"request": request})
+
+
+@router.get("/clients", response_class=HTMLResponse)
+async def dashboard(request: Request, user = Depends(manager)):
+    return templates.TemplateResponse("/pages/clients.html", {"request": request})
 
 
 
