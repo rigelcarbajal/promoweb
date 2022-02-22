@@ -19,13 +19,13 @@ async def dashboard(request: Request, user = Depends(manager)):
     return templates.TemplateResponse("/pages/dashboard.html", {"request": request, "user": user, "dbusers": db_user})
 
 @router.get("/products", response_class=HTMLResponse)
-async def dashboard(request: Request, user = Depends(manager)):
-    return templates.TemplateResponse("/pages/products.html", {"request": request})
+async def products(request: Request, user = Depends(manager)):
+    return templates.TemplateResponse("/pages/products.html", {"request": request, "user": user})
 
 
-@router.get("/clients", response_class=HTMLResponse)
-async def dashboard(request: Request, user = Depends(manager)):
-    return templates.TemplateResponse("/pages/clients.html", {"request": request})
+@router.get("/customers", response_class=HTMLResponse)
+async def customers(request: Request, user = Depends(manager)):
+    return templates.TemplateResponse("/pages/customers.html", {"request": request, "user": user})
 
 
 

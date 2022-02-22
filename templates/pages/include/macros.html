@@ -1,7 +1,7 @@
 <!-- https://realpython.com/primer-on-jinja-templating/ -->
 <!-- start navbar items dashboard -->
 {% macro nav_link(endpoint, name) %}
-{% if request.endpoint(endpoint) %}
+{% if request.url.path[1:] == endpoint %}
 <li class="sidebar-item active">
   <a class="sidebar-link" href="{{ url_for(endpoint) }}">
       <i class="align-middle"></i> <span class="align-middle">{{ name }}</span>
