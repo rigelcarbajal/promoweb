@@ -2,12 +2,11 @@ from enum import Enum
 from datetime import datetime
 from typing import Optional
 
-from fastapi import APIRouter, Body, HTTPException
+from fastapi import APIRouter, Body, HTTPException, Depends
 from fastapi.encoders import jsonable_encoder
 from pydantic import BaseModel, EmailStr, Field
 from uuid import UUID, uuid4
 from decouple import config
-from pydantic.types import UUID1
 
 from .database import db_user
 from .security.tools import get_password_hash
@@ -50,6 +49,7 @@ class UserSchema(BaseModel):
     nss: int
     emergencyContact: str   = Field(...)
     emergencyPhone: str     = Field(...)
+    is_admin: bool          = Field(default_factory=False)
     is_active: bool         = Field(default_factory=True)
     updated_at: datetime    = Field(default_factory=datetime.utcnow)
     created_at: datetime    = Field(default_factory=datetime.utcnow)
@@ -57,19 +57,20 @@ class UserSchema(BaseModel):
     class Config:
         schema_extra = {
             "example": {
-                "firstName" : "Rigel David",
-                "lastName"  : "Gutiérrez Carbajal",
-                "password"  : "qwerty321",
-                "area"      : "TI",
-                "type"      : "Tiempo Completo",
-                "phone"     : "4521072166",
-                "email"     : "rigel.gc@outlook.com",
-                "curp"      : "GUCR900305HMNTRG01",
-                "rfc"       : "GUCR900305UT1",
-                "nss"       : 2549865484,
-                "emergencyContact": "Maria de la Luz",
-                "emergencyPhone"  : "4521225158",
-                "is_active" : True
+                "firstName"         : "Rigel David",
+                "lastName"          : "Gutiérrez Carbajal",
+                "password"          : "qwerty321",
+                "area"              : "TI",
+                "type"              : "Tiempo Completo",
+                "phone"             : "4521072166",
+                "email"             : "rigel.gc@outlook.com",
+                "curp"              : "GUCR900305HMNTRG01",
+                "rfc"               : "GUCR900305UT1",
+                "nss"               : 2549865484,
+                "emergencyContact"  : "Maria de la Luz",
+                "emergencyPhone"    : "4521225158",
+                "is_admin"          : True,
+                "is_active"         : True
             }
         }
 
@@ -88,6 +89,7 @@ class UpdateUserSchema(BaseModel):
     nss: int
     emergencyContact: str
     emergencyPhone: str
+    is_admin: bool
     is_active: bool
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
@@ -106,6 +108,7 @@ class UpdateUserSchema(BaseModel):
                 "nss"       : 2549865484,
                 "emergencyContact": "Maria de la Luz",
                 "emergencyPhone"  : "4521225158",
+                "is_admin"  : True,
                 "is_active" : False
             }
         }
@@ -152,7 +155,7 @@ async def update_user(key: str, req: UpdateUserSchema = Body(...)):
 
 @router.get("/{key}", response_description="Get especific user.")
 async def get_user(key: str):
-    user = db_user.get(key)
+    user = await db_user.get(key)
     if user:
         return user
     return HTTPException(status_code=401, detail="User doesn't exist.")
