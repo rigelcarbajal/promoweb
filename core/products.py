@@ -9,11 +9,12 @@ from uuid import UUID, uuid4
 
 
 class ItemSchema(BaseModel):
-    id: UUID = Field(default_factory=uuid4)
-    sku: str = Field(...)
+    id: UUID                = Field(default_factory=uuid4)
+    sku: str                = Field(...)
     father_sku: str
     name: str
     category: str
+    item_type: str
     brand: str
     color: str
     price: float
@@ -30,7 +31,7 @@ class ItemSchema(BaseModel):
     stars: int
     tissue: str
     sex: str
-    is_active: bool = Field(default_factory=True)
+    is_active: bool         = Field(default_factory=True)
     updated_at: datetime    = Field(default_factory=datetime.utcnow)
     created_at: datetime    = Field(default_factory=datetime.utcnow)
 
