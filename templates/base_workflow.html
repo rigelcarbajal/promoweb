@@ -9,13 +9,28 @@
                 <span class="align-middle">Promoser Grupo</span>
             </a>
 
+            
+
             <ul class="sidebar-nav">
+
+                {% if user['is_admin'] == True %}
+                <li class="sidebar-header">
+                    Administrador
+                </li>
+                    {{ nav_link('users', 'Usuarios') }}
+                {% endif %}
+
+
+
+
                 <li class="sidebar-header">
                     Secciones
                 </li>
                 {{ nav_link('dashboard', 'Dashboard') }}
                 {{ nav_link('products', 'Productos') }}
                 {{ nav_link('customers', 'Clientes') }}
+
+                
                 
             </ul>
         </div>
@@ -120,10 +135,12 @@
         </nav>
 
         <!-- Main was here depends of menu selection -->
-       {% block workflow %} {% endblock workflow %}
+       {% block workflow %}{% endblock workflow %}
 
     </div>
 </div>
+
+
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {

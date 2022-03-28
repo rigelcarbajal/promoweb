@@ -28,4 +28,8 @@ async def customers(request: Request, user = Depends(manager)):
     return templates.TemplateResponse("/pages/customers.html", {"request": request, "user": user})
 
 
+@router.get("/users", response_class=HTMLResponse)
+async def users(request: Request, user = Depends(manager)):
+    return templates.TemplateResponse("/pages/users.html", {"request": request, "user": user, "dbusers": db_user})
+
 

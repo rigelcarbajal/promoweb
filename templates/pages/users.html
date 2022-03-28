@@ -1,5 +1,8 @@
+{% extends "base_workflow.html" %}
 {% block title %} Usuarios {% endblock title %}
 
+
+{% block workflow %}
 
 <div class="tab-content clearfix">
     <div class="tab-pane active" id="users">
@@ -8,8 +11,9 @@
         <main class="content">
             <div class="container-fluid p-0">
         
-                <h1 class="h3 mb-3">Usuarios</h1>
-        
+                <h1 class="h3 mb-3">Usuarios</h1> 
+                <button type="button" class="btn btn-sm btn-outline-success" data-bs-toggle="modal" data-bs-target="#newUserModal">Nuevo Usuario</button>
+
                 <div class="row">
                     <div class="col-12">
         
@@ -55,11 +59,35 @@
         
                     </div>
                 </div>
-        
+
             </div>
         </main>
-
-
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal-dialog fade modal-fullscreen" id="newUserModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock workflow %}
+
+
+
+
+
 

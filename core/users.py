@@ -24,6 +24,7 @@ class UserArea(str, Enum):
     adviser     = 'Asesor Externo'
     sales       = 'Ventas'
     management  = 'Gerencia'
+    design      = 'Disegno'
     production  = 'Produccion'
 
 # User Model - Enum - Type
@@ -42,7 +43,7 @@ class UserSchema(BaseModel):
     password: str           = Field(...)
     area: UserArea
     type: UserType
-    phone: str
+    phone: str              = Field(...)
     email: EmailStr
     curp: str               = Field(...)
     rfc: str
