@@ -1,3 +1,4 @@
+import datetime
 from fastapi import APIRouter, Request
 from fastapi.params import Depends
 from fastapi.responses import HTMLResponse
@@ -16,7 +17,8 @@ async def root(request: Request):
 
 @router.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request, user = Depends(manager)):
-    return templates.TemplateResponse("/pages/dashboard.html", {"request": request, "user": user, "dbusers": db_user})
+    time = datetime
+    return templates.TemplateResponse("/dashboard.html", {"request": request, "user": user, "dbusers": db_user, "time": time })
 
 @router.get("/products", response_class=HTMLResponse)
 async def products(request: Request, user = Depends(manager)):
