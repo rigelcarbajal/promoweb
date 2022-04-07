@@ -18,7 +18,7 @@ async def root(request: Request):
 @router.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request, user = Depends(manager)):
     time = datetime
-    return templates.TemplateResponse("/dashboard.html", {"request": request, "user": user, "dbusers": db_user, "time": time })
+    return templates.TemplateResponse("/pages/sales.html", {"request": request, "user": user, "dbusers": db_user, "time": time })
 
 @router.get("/products", response_class=HTMLResponse)
 async def products(request: Request, user = Depends(manager)):

@@ -1,18 +1,23 @@
 <!-- https://realpython.com/primer-on-jinja-templating/ -->
 <!-- start navbar items dashboard -->
-{% macro nav_link(endpoint, name) %}
+{% macro nav_link(endpoint, name, icon) %}
 {% if request.url.path[1:] == endpoint %}
-<li class="sidebar-item active">
-  <a class="sidebar-link" href="{{ url_for(endpoint) }}">
-      <i class="align-middle"></i> <span class="align-middle">{{ name }}</span>
+<li class="uk-active">
+  <a href="{{ url_for(endpoint) }}">
+    <span class="uk-margin-small-right" uk-icon="icon: {{ icon }}"></span>
+    {{ name }}
   </a>
 </li>
 {% else %}
-<li class="sidebar-item">
-  <a class="sidebar-link" href="{{ url_for(endpoint) }}">
-      <i class="align-middle"></i> <span class="align-middle">{{ name }}</span>
+<li class="">
+  <a href="{{ url_for(endpoint) }}">
+    <span class="uk-margin-small-right" uk-icon="icon: {{ icon }}}"></span>
+    {{ name }}
   </a>
 </li>
 {% endif %}
 {% endmacro %}
 <!-- end navbar items dashboard -->
+
+
+
