@@ -9,16 +9,15 @@ from .security.auth import manager
 
 router = APIRouter()
 
+time = datetime
 
 @router.get("/", response_class=HTMLResponse)
 async def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-
 @router.get("/dashboard", response_class=HTMLResponse)
 async def dashboard(request: Request, user = Depends(manager)):
-    time = datetime
-    return templates.TemplateResponse("/pages/sales.html", {"request": request, "user": user, "dbusers": db_user, "time": time })
+    return templates.TemplateResponse("/pages/sales.html", {"request": request, "user": user, "time": time })
 
 @router.get("/products", response_class=HTMLResponse)
 async def products(request: Request, user = Depends(manager)):
@@ -32,6 +31,6 @@ async def customers(request: Request, user = Depends(manager)):
 
 @router.get("/users", response_class=HTMLResponse)
 async def users(request: Request, user = Depends(manager)):
-    return templates.TemplateResponse("/pages/users.html", {"request": request, "user": user, "dbusers": db_user})
+    return templates.TemplateResponse("/pages/users.html", {"request": request, "user": user, "dbusers": db_user, "time": time })
 
 
