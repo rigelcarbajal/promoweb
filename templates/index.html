@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} Inicio {% endblock title %}
+{% block title %} Promoser ~ Inicio {% endblock title %}
 
 {% block content %}
 
@@ -8,8 +8,12 @@
 
 	<div class="uk-position-center">
 
+		
+
 		<div class="uk-card uk-card-default uk-card-hover uk-card-body">
-			<h3 class="uk-card-title">Bienvenido</h3>
+			<img src="{{ url_for('static', path='logo_circle.webp') }}" alt="" uk-img>
+
+			<h3 class="uk-text-default">Iniciar Sesion</h3>
 
 			<form action="/auth" method="POST" autocomplete="off">
 					<div class="uk-margin">

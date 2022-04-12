@@ -36,7 +36,8 @@ class ItemSchema(BaseModel):
     created_at: datetime    = Field(default_factory=datetime.utcnow)
 
     
-
+class TextileSchema(BaseModel):
+    pass
 
 
 

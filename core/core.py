@@ -1,9 +1,11 @@
 import datetime
+import asyncio
 from fastapi import APIRouter, Request
 from fastapi.params import Depends
 from fastapi.responses import HTMLResponse
 from dependencies import templates
 from .database import db_user
+from .database import client
 
 from .security.auth import manager
 
@@ -13,6 +15,7 @@ time = datetime
 
 @router.get("/", response_class=HTMLResponse)
 async def root(request: Request):
+    
     return templates.TemplateResponse("index.html", {"request": request})
 
 @router.get("/dashboard", response_class=HTMLResponse)
