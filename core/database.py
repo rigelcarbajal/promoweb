@@ -1,3 +1,4 @@
+import asyncio
 import motor.motor_asyncio
 from deta import Deta
 from decouple import config
